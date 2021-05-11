@@ -10,20 +10,20 @@ package Objetos;
  * @author meza4
  */
 public class Salon {
-    private int numero;
+    private int id;
     private int estudiantes;
 
-    public Salon(int numero, int estudiantes) {
-        this.numero = numero;
+    public Salon(int id, int estudiantes) {
+        this.id = id;
         this.estudiantes = estudiantes;
     }
 
-    public int getNumero() {
-        return numero;
+    public int getId() {
+        return id;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getEstudiantes() {

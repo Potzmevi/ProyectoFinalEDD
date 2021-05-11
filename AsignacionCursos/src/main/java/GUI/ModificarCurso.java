@@ -224,7 +224,7 @@ public class ModificarCurso extends javax.swing.JFrame {
             
             if (!codigo.getText().equals("") && !nombre.getText().equals("") && !semestre.getText().equals("") && !creditos.getText().equals("")) {
                 Curso curso =new Curso(Integer.valueOf(codigo.getText()), nombre.getText(), Integer.valueOf(semestre.getText()), Integer.valueOf(creditos.getText()));
-               listaCursos.modificarData(Integer.parseInt(codigo.getText()), curso);
+               listaCursos.modificarData(codigo.getText(), curso);
                JOptionPane.showMessageDialog(null, "Curso modificado con exito");
                this.dispose();
 

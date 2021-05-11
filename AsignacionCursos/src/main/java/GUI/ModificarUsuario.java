@@ -236,7 +236,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
             
             if (!usuario.getText().equals("") && !password.getText().equals("") && !tipo.getText().equals("")) {
                 Usuario user =new Usuario(Integer.parseInt(id.getText()), usuario.getText(), password.getText(), tipo.getText());
-               listaUsuarios.modificarData(Integer.parseInt(id.getText()), user);
+               listaUsuarios.modificarData(id.getText(), user);
                JOptionPane.showMessageDialog(null, "Usuario modificado con exito");
                this.dispose();
             } else {

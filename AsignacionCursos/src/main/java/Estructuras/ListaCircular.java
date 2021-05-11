@@ -25,6 +25,10 @@ public class ListaCircular<T> {
         end = null;
     }
 
+    public Nodo<T> getRoot() {
+        return root;
+    }
+
     public void add(T data) {
         Nodo nuevoNodo = new Nodo<T>(data);
 
@@ -160,20 +164,27 @@ public class ListaCircular<T> {
         return null;
     }
 
-    public Nodo<T> modificarData(int id, T data) {
+    public Nodo<T> modificarData(String id, T data) {
         if (root != null) {
             Nodo<T> aux = root;
             do {
                 if (aux.getData() instanceof Usuario) {
                     Usuario user = (Usuario) aux.getData();
-                    if (user.getId() == id) {
+                    if (user.getId() ==Integer.valueOf( id)) {
                         aux.setData(data);
                         return aux;
                     }
                 }
                 else if (aux.getData() instanceof Curso) {
                      Curso curso = (Curso) aux.getData();
-                    if (curso.getCodigo()== id) {
+                    if (curso.getCodigo()== Integer.valueOf( id)) {
+                        aux.setData(data);
+                        return aux;
+                    }
+                    
+                }else if (aux.getData() instanceof Edificio) {
+                     Edificio curso = (Edificio) aux.getData();
+                    if (curso.getNombre().equalsIgnoreCase(String.valueOf(id))) {
                         aux.setData(data);
                         return aux;
                     }

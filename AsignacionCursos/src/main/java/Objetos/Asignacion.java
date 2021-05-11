@@ -14,4 +14,6 @@ public class Asignacion {
     private int horario;
     private int zona;
     private int notaFinal;
+    
+    
 }
