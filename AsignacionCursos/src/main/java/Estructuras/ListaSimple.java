@@ -34,6 +34,7 @@ public class ListaSimple<T> {
             JOptionPane.showMessageDialog(null, "El id: \"" + getId(data) + "\" ya existe.");
             return false;
         }
+        sort();
         return true;
     }
     public boolean doesntExists(T data) {
@@ -221,6 +222,35 @@ public class ListaSimple<T> {
             }
         } else {
             System.out.println("************ LISTA VACIA ************");
+        }
+    }
+    
+    public void sort() {
+        int size = getSize();
+        if (size > 1)
+        {
+            for (int i = 0; i < getSize(); i++)
+            {
+                Nodo<T> actual = root;
+                Nodo<T> siguiente = actual.getNext();
+                for (int j = 1; j < getSize(); j++)
+                {
+                    int id_actual =Integer.valueOf( getId(actual.getData()));
+                    int id_siguiente = Integer.valueOf( getId(siguiente.getData()));
+                    if ( id_actual < id_siguiente )
+                    {
+                        T data_actual = actual.getData();
+                        actual.setData(siguiente.getData());
+                        siguiente.setData(data_actual);
+                        actual = actual.getNext();
+                        siguiente = siguiente.getNext();
+                    } else
+                    {
+                        actual = actual.getNext();
+                        siguiente = siguiente.getNext();
+                    }
+                }
+            }
         }
     }
 
