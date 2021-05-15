@@ -13,15 +13,17 @@ public class Horario {
     private int codigo;
     private String rangoHora;
     private String dia;
-    private int codigoCurso;
-    private int codigoSalon;
-    private int codigoCatedratico;
+    private Curso codigoCurso;
+     private Edificio codigoEdificio;
+    private Salon codigoSalon;
+    private Catedratico codigoCatedratico;
 
-    public Horario(int codigo, String rangoHora, String dia, int codigoCurso, int codigoSalon, int codigoCatedratico) {
+    public Horario(int codigo, String rangoHora, String dia, Curso codigoCurso, Edificio codigoEdificio, Salon codigoSalon, Catedratico codigoCatedratico) {
         this.codigo = codigo;
         this.rangoHora = rangoHora;
         this.dia = dia;
         this.codigoCurso = codigoCurso;
+        this.codigoEdificio = codigoEdificio;
         this.codigoSalon = codigoSalon;
         this.codigoCatedratico = codigoCatedratico;
     }
@@ -50,29 +52,39 @@ public class Horario {
         this.dia = dia;
     }
 
-    public int getCodigoCurso() {
+    public Curso getCodigoCurso() {
         return codigoCurso;
     }
 
-    public void setCodigoCurso(int codigoCurso) {
+    public void setCodigoCurso(Curso codigoCurso) {
         this.codigoCurso = codigoCurso;
     }
 
-    public int getCodigoSalon() {
+    public Edificio getCodigoEdificio() {
+        return codigoEdificio;
+    }
+
+    public void setCodigoEdificio(Edificio codigoEdificio) {
+        this.codigoEdificio = codigoEdificio;
+    }
+
+    public Salon getCodigoSalon() {
         return codigoSalon;
     }
 
-    public void setCodigoSalon(int codigoSalon) {
+    public void setCodigoSalon(Salon codigoSalon) {
         this.codigoSalon = codigoSalon;
     }
 
-    public int getCodigoCatedratico() {
+    public Catedratico getCodigoCatedratico() {
         return codigoCatedratico;
     }
 
-    public void setCodigoCatedratico(int codigoCatedratico) {
+    public void setCodigoCatedratico(Catedratico codigoCatedratico) {
         this.codigoCatedratico = codigoCatedratico;
     }
+
+  
     
     
 }

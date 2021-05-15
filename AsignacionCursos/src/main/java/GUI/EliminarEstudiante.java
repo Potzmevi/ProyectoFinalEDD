@@ -15,15 +15,15 @@ import Estructuras.ListaCircular.Nodo;
  */
 import Objetos.Usuario;
 import Main.Main;
-import static Main.Main.catedraticos;
+import static Main.Main.estudiantes;
 import static Main.Main.listaCursos;
 
-public class EliminarCatedratico extends javax.swing.JFrame {
+public class EliminarEstudiante extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
-    public EliminarCatedratico() {
+    public EliminarEstudiante() {
         initComponents();
         setVisible(true);
         pack();
@@ -54,7 +54,7 @@ public class EliminarCatedratico extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Consolas", 1, 31)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Eliminar Catedratico");
+        jLabel3.setText("Eliminar Estudiante");
 
         jButton12.setBackground(new java.awt.Color(255, 255, 204));
         jButton12.setFont(new java.awt.Font("Consolas", 0, 15)); // NOI18N
@@ -70,7 +70,7 @@ public class EliminarCatedratico extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Consolas", 0, 17)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("ID");
+        jLabel10.setText("Carnet");
 
         id.setBackground(new java.awt.Color(255, 255, 204));
         id.setForeground(new java.awt.Color(0, 0, 0));
@@ -85,7 +85,7 @@ public class EliminarCatedratico extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(43, 43, 43)
                 .addComponent(jLabel3)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(204, 204, 204)
                 .addComponent(jLabel10)
@@ -132,12 +132,11 @@ public class EliminarCatedratico extends javax.swing.JFrame {
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         try {
             if (!id.getText().equals("")) {
-                ArbolAVL.NodoAVL nodo = catedraticos.buscar(id.getText());
-                if (nodo == null) {
-                    JOptionPane.showMessageDialog(null, "Catedratico con ese id no existe");
+               boolean exito=estudiantes.remove(Integer.valueOf(id.getText()));
+                if (exito == false) {
+                    JOptionPane.showMessageDialog(null, "Estudiante con ese id no existe");
                 } else {
-                    catedraticos.eliminar(nodo);
-                    JOptionPane.showMessageDialog(null, "Catedratico con el codigo: "+id.getText()+" Eliminado con exito");
+                    JOptionPane.showMessageDialog(null, "Estudiante con el carnet: "+id.getText()+" Eliminado con exito");
                     this.dispose();
                 }
             } else {
@@ -165,14 +164,30 @@ public class EliminarCatedratico extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EliminarCatedratico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EliminarEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EliminarCatedratico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EliminarEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EliminarCatedratico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EliminarEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EliminarCatedratico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EliminarEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -193,7 +208,7 @@ public class EliminarCatedratico extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EliminarCatedratico().setVisible(true);
+                new EliminarEstudiante().setVisible(true);
             }
         });
     }

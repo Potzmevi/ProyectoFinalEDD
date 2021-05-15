@@ -25,9 +25,8 @@ public class TablaHash<T> {
     private List<T>[] arr;
     private int size = 0;
 
-    @SuppressWarnings("unchecked")
     public TablaHash() {
-        CAPACITY = 3;
+        CAPACITY = 37;
         LF = 0.55f;
         MAX_SIZE = (int) (LF * CAPACITY);
         arr = new List[CAPACITY];
@@ -36,7 +35,7 @@ public class TablaHash<T> {
         }
     }
 
-    @SuppressWarnings("unchecked")
+
     public TablaHash(int initialCapacity) {
 
         assert (initialCapacity > 0);
@@ -50,7 +49,7 @@ public class TablaHash<T> {
         }
     }
 
-    @SuppressWarnings("unchecked")
+
     public TablaHash(int initialCapacity, int loadFactor) {
         assert (initialCapacity > 0);
         assert (loadFactor > 0 && loadFactor <= 1);
@@ -83,11 +82,17 @@ public class TablaHash<T> {
         return null;
     }
 
+    public void modificarDato( Estudiante estu){
+        Estudiante estudiante= get(estu.getCarnet());
+        estudiante.setNombre(estu.getNombre());
+        estudiante.setDireccion(estu.getDireccion());
+    }
+    
     public boolean add(T item) {
         if (item instanceof Estudiante) {
             try {
                 if (get(((Estudiante) item).getCarnet()) != null) {
-                    JOptionPane.showMessageDialog(null, "Ya existe un estudiante con ese carnet");
+                    
                     return false;
                 }
             } catch (Exception e) {
@@ -121,7 +126,7 @@ public class TablaHash<T> {
 
         }
 
-        return false;
+        return true;
     }
 
     private void addItem(T item) {

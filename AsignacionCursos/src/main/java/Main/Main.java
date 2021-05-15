@@ -6,10 +6,17 @@
 package Main;
 
 import Estructuras.*;
+import Estructuras.ArbolB.ArbolB;
+import Estructuras.ArbolB.LlaveEntero;
 import GUI.Login;
 import Objetos.Estudiante;
 import Objetos.Usuario;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Hashtable;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,35 +29,70 @@ public class Main {
     public static ListaCircular listaCursos = new ListaCircular();
     public static ArbolAVL catedraticos = new ArbolAVL();
     public static Usuario usuarioActual;
+    public static TablaHash estudiantes = new TablaHash<>();
+    public static ArbolB horarios = new ArbolB(2);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         listaUsuarios.add(new Usuario(123, "p", "p", "ESTUDIANTE"));
         listaUsuarios.add(new Usuario(1234, "Gordo", "Alejandrio", "ESTUDIANTE"));
         listaUsuarios.add(new Usuario(1235, "Trolo", "Alejandrio", "ESTUDIANTE"));
 
-        TablaHash list = new TablaHash<>();
         Estudiante estu = new Estudiante(201930268, "Juan Pablo", "Zona 9");
-        Estudiante estu2 = new Estudiante(201930268, "Juan Pablo", "Zona 9");
-        Estudiante estu3 = new Estudiante(201930268, "Juan Pablo", "Zona 9");
+        Estudiante estu2 = new Estudiante(201930258, "Juan Pablo", "Zona 9");
+        Estudiante estu3 = new Estudiante(201330268, "Juan Pablo", "Zona 9");
         Estudiante estu4 = new Estudiante(201930268, "Juan Pablo", "Zona 9");
         Estudiante estu5 = new Estudiante(201930643, "Juan Pablo", "Zona 9");
-        Estudiante estu6 = new Estudiante(201930643, "Juan Pablo", "Zona 9");
-        Estudiante estu7 = new Estudiante(201930643, "Juan Pablo", "Zona 9");
-        Estudiante estu8 = new Estudiante(201930643, "Juan Pablo", "Zona 9");
+        Estudiante estu6 = new Estudiante(201920643, "Juan Pablo", "Zona 9");
+        Estudiante estu7 = new Estudiante(201935643, "Juan Pablo", "Zona 9");
+        Estudiante estu8 = new Estudiante(201230643, "Juan Pablo", "Zona 9");
+        horarios.insert(new LlaveEntero(1), "Si");
+        System.out.println(horarios.search(new LlaveEntero(1)));
         System.out.println("add(abc)");
-        list.add(estu);
-        list.add(estu2);
-        list.add(estu3);
-        list.add(estu4);
+        estudiantes.add(estu);
+        estudiantes.add(estu2);
 
-        System.out.println("items: " + list);
-        System.out.println("size: " + list.size());
-        list.remove(estu.getCarnet());
+        System.out.println("items: " + estudiantes);
+        System.out.println("size: " + estudiantes.size());
 
-        System.out.println("items: " + list);
-        System.out.println("size: " + list.size());
-
+        
+        
+        File imagenSalida = new File("./imagenYArbolGenerado.dot");
+            if (!imagenSalida.exists()) {
+                imagenSalida.createNewFile();
+            } else {
+                imagenSalida.delete();
+                imagenSalida.createNewFile();
+            }
+            guardarImagen(horarios.toDot(), imagenSalida.getAbsolutePath());
+            String command = "dot -Tpng imagenYArbolGenerado.dot -o imagenYArbolGenerado.png";
+            Runtime.getRuntime().exec(command);
+        
+        
         new Login();
+        
+        
     }
+
+    public static void guardarImagen(String texto, String absolutePath) {
+        //Writer para leer el archivo 
+        FileWriter writer = null;
+        try {
+            //Crea el archivo en la absolute path
+            writer = new FileWriter(absolutePath, true);
+            try (BufferedWriter out = new BufferedWriter(writer)) {
+                out.write("");
+                out.write(texto);
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error al guardar la imagen");
+        } finally {
+            try {
+                writer.close();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Error al guardar la imagen");
+            }
+        }
+    }
+
 }
