@@ -156,4 +156,14 @@ public class ArbolB {
     public int getAltura() {
         return mAltura;
     }
+
+    public Nodo getmRaiz() {
+        return mRaiz;
+    }
+
+    public void setmRaiz(Nodo mRaiz) {
+        this.mRaiz = mRaiz;
+    }
+    
+    
 }

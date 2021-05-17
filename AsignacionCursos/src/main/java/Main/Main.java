@@ -27,15 +27,18 @@ public class Main {
     public static ListaCircular listaUsuarios = new ListaCircular();
     public static ListaCircular listaEdificios = new ListaCircular();
     public static ListaCircular listaCursos = new ListaCircular();
+    public static ListaCircular listaAsignaciones=new ListaCircular();
     public static ArbolAVL catedraticos = new ArbolAVL();
     public static Usuario usuarioActual;
     public static TablaHash estudiantes = new TablaHash<>();
     public static ArbolB horarios = new ArbolB(2);
-
+    public static int totalAsignaciones;
+    
+    
     public static void main(String[] args) throws IOException {
 
-        listaUsuarios.add(new Usuario(123, "p", "p", "ESTUDIANTE"));
-        listaUsuarios.add(new Usuario(1234, "Gordo", "Alejandrio", "ESTUDIANTE"));
+        listaUsuarios.add(new Usuario(201930268, "p", "p", "ESTUDIANTE"));
+        listaUsuarios.add(new Usuario(1234, "g", "g", "COLABORADOR"));
         listaUsuarios.add(new Usuario(1235, "Trolo", "Alejandrio", "ESTUDIANTE"));
 
         Estudiante estu = new Estudiante(201930268, "Juan Pablo", "Zona 9");
@@ -46,7 +49,7 @@ public class Main {
         Estudiante estu6 = new Estudiante(201920643, "Juan Pablo", "Zona 9");
         Estudiante estu7 = new Estudiante(201935643, "Juan Pablo", "Zona 9");
         Estudiante estu8 = new Estudiante(201230643, "Juan Pablo", "Zona 9");
-        horarios.insert(new LlaveEntero(1), "Si");
+
         System.out.println(horarios.search(new LlaveEntero(1)));
         System.out.println("add(abc)");
         estudiantes.add(estu);
@@ -54,10 +57,9 @@ public class Main {
 
         System.out.println("items: " + estudiantes);
         System.out.println("size: " + estudiantes.size());
-
         
         
-        File imagenSalida = new File("./imagenYArbolGenerado.dot");
+       /* File imagenSalida = new File("./imagenYArbolGenerado.dot");
             if (!imagenSalida.exists()) {
                 imagenSalida.createNewFile();
             } else {
@@ -67,7 +69,7 @@ public class Main {
             guardarImagen(horarios.toDot(), imagenSalida.getAbsolutePath());
             String command = "dot -Tpng imagenYArbolGenerado.dot -o imagenYArbolGenerado.png";
             Runtime.getRuntime().exec(command);
-        
+        */
         
         new Login();
         

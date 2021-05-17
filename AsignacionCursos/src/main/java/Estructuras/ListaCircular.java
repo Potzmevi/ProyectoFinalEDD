@@ -5,9 +5,13 @@
  */
 package Estructuras;
 
+import Objetos.Asignacion;
 import Objetos.Curso;
 import Objetos.Edificio;
+import Objetos.Estudiante;
+import Objetos.Horario;
 import Objetos.Usuario;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -79,10 +83,54 @@ public class ListaCircular<T> {
          else if (data instanceof Curso) {
             Curso curso = (Curso) data;
             return String.valueOf(curso.getCodigo());
+        } else if (data instanceof Asignacion) {
+            Asignacion asignacion = (Asignacion) data;
+            return String.valueOf(asignacion.getCodigo());
         }
         return null;
     }
+    
+ public int obtenerAsignacionesSalon(int salon, String edificio) {
+        int contador = 0;
+        if (root != null) {
+            Nodo<T> aux = root;
 
+            do {
+                if (aux.getData() instanceof Asignacion) {
+                    Asignacion asignacion = (Asignacion) aux.getData();
+                    Horario horario = asignacion.getHorario();
+                    if ((horario.getCodigoEdificio().getNombre().equals(edificio)) && (horario.getCodigoSalon().getId()== salon)) {
+                        contador++;
+                    }
+
+                }
+                aux = aux.getNext();
+            } while (aux != root);
+        }
+        return contador;
+    }
+
+ public ArrayList obtenerAsignacionesEstudiante(int carnet) {
+        ArrayList asignaciones = new ArrayList();
+     if (root != null) {
+            Nodo<T> aux = root;
+
+            do {
+                if (aux.getData() instanceof Asignacion) {
+                    Asignacion asignacion = (Asignacion) aux.getData();
+                    Estudiante estu = asignacion.getEstudiante();
+                    if (estu.getCarnet()==carnet ) {
+                        asignaciones.add(asignacion);
+                    }
+
+                }
+                aux = aux.getNext();
+            } while (aux != root);
+        }
+        return asignaciones;
+    }
+    
+    
     private Nodo<T> getNodo(String id) {
         if (root != null) {
             Nodo<T> aux = root;

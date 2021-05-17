@@ -1,5 +1,8 @@
 package Estructuras.ArbolB;
 
+import Objetos.Horario;
+import java.util.ArrayList;
+
 public class Nodo {
 
     int mK;
@@ -37,6 +40,16 @@ public class Nodo {
         return b.toString();
         
     }
+    
+     public ArrayList<Horario> toArray() {
+        ArrayList<Horario> horariosEncontrados = new ArrayList<>();
+        for (int i = 0; i < mB; i++) {
+            Horario horario = (Horario) Main.Main.horarios.search(new LlaveEntero(Integer.valueOf(mLlaves[i].getKey().toString())));
+            horariosEncontrados.add(horario);
+        }
+        return horariosEncontrados;
+    }
+    
     
     public Nodo(int pK) {
         this.mK = pK;

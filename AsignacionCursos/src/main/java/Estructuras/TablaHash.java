@@ -72,12 +72,20 @@ public class TablaHash<T> {
         return size == 0;
     }
 
-    public Estudiante get(int carnet) {
+   public Estudiante get(int carnet) {
 
         int index = hashing(carnet);
-        List<T> list = arr[index];
-        if (((Estudiante) list.getHead().val).getCarnet() == carnet) {
-            return ((Estudiante) list.getHead().val);
+        List<T> list;
+        int contador = 0;
+        while (contador <= size()) {
+            list = arr[index];
+            if (list.getHead() != null) {
+                if (((Estudiante) list.getHead().val).getCarnet() == carnet) {
+                    return (Estudiante) list.getHead().val;
+                }
+            }
+            index = hashingCollision(carnet, contador);
+            contador++;
         }
         return null;
     }
@@ -182,21 +190,26 @@ public class TablaHash<T> {
     public boolean remove(int carnet) {
 
         int index = hashing(carnet);
-        List<T> list = arr[index];
+        List<T> list;
+        int contador = 0;
 
-        if (list.getHead() != null) {
-            if (((Estudiante) list.getHead().val).getCarnet() == carnet) {
-                list.removeHead();
-                size--;
-                return true;
+        while (contador <= size()) {
+            list = arr[index];
+            if (list.getHead() != null) {
+                if (((Estudiante) list.getHead().val).getCarnet() == carnet) {
+                    list.removeHead();
+                    size--;
+                    return true;
+                }
             }
-        } else {
-            return false;
+            index = hashingCollision(carnet, contador);
+            contador++;
         }
-
         return false;
     }
 
+    
+    
     private int getNearestPowerTwo(int capacity) {
         int shifts = 0;
         while (capacity > 0) {

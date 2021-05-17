@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import Main.Main;
+
 /**
  *
  * @author meza4
@@ -43,8 +45,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         user = new javax.swing.JLabel();
         jButton13 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
+        tipo = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -63,7 +69,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Usuario:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 84, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 204));
         jButton2.setFont(new java.awt.Font("Consolas", 0, 15)); // NOI18N
@@ -154,7 +160,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         user.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
         user.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel1.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(277, 84, 251, 21));
+        jPanel1.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 251, 21));
 
         jButton13.setBackground(new java.awt.Color(255, 255, 204));
         jButton13.setFont(new java.awt.Font("Consolas", 0, 15)); // NOI18N
@@ -168,6 +174,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 190, 40));
+
+        jLabel4.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Id:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, -1, -1));
+
+        id.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
+        id.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 251, 21));
+
+        tipo.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
+        tipo.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 251, 21));
+
+        jLabel5.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Tipo:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,7 +213,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        user.setText(Main.Main.usuarioActual.getNombre());
+       user.setText(Main.usuarioActual.getNombre());
+        tipo.setText(Main.usuarioActual.getTipo());
+        id.setText(String.valueOf(Main.usuarioActual.getId()));
     }//GEN-LAST:event_formComponentShown
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -252,6 +278,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel id;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -263,8 +290,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel tipo;
     private javax.swing.JLabel user;
     // End of variables declaration//GEN-END:variables
 }

@@ -200,22 +200,26 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         if (!usuario.getText().equals("") && !password.getText().equals("")) {
-            if (tipo.getSelectedIndex() == 0) {
-            } else if (tipo.getSelectedIndex() == 1) {
-                try {
-                    Usuario user = (Usuario) Main.listaUsuarios.buscarNombre(usuario.getText()).getData();
-                    if (user != null) {
-                        if (user.getPassword().equals(password.getText())) {
-                            Main.usuarioActual = user;
-                            new MenuPrincipal();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Password incorrecta");
+            try {
+                Usuario user = (Usuario) Main.listaUsuarios.buscarNombre(usuario.getText()).getData();
+                if (user != null) {
+                    if (user.getPassword().equals(password.getText())) {
+                        Main.usuarioActual = user;
+                        if (tipo.getSelectedIndex() == 0 && user.getTipo().equals("COLABORADOR")) {
+                             new MenuPrincipal();
+                        } else if (tipo.getSelectedIndex() == 1 && user.getTipo().equals("ESTUDIANTE")) {
+                            new MenuEstudiante();
                         }
+                        
+                       
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Password incorrecta");
                     }
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Usuario no encontrado");
                 }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Usuario no encontrado");
             }
+
         } else {
             JOptionPane.showMessageDialog(null, "Por favor llene los campos");
         }
