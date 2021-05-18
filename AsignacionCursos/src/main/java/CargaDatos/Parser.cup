@@ -1,0 +1,193 @@
+package CargaDatos;
+import java_cup.runtime.*;
+import Estructuras.*;
+import Estructuras.ArbolB.LlaveEntero;
+import Estructuras.ListaCircular.Nodo;
+import Objetos.*;
+import java_cup.runtime.XMLElement;
+
+
+
+parser code {:
+    //Listas
+    private ArrayList<Estudiante> estudiantesList = new ArrayList<>();
+    private ArrayList<Usuario> usuariosList = new ArrayList<>();
+    private ArrayList<Edificio> edificiosList = new ArrayList<>();
+    private ArrayList<Salon> salonesList = new ArrayList<>();
+    private ArrayList<Catedratico> catedraticosList = new ArrayList<>();
+    private ArrayList<Curso> cursosList = new ArrayList<>();
+    private ArrayList<Horario> horariosList= new ArrayList<>();
+    private ArrayList<Asignacion> asignacionesList = new ArrayList<>();
+
+public ArrayList getEstudiantesList(){ 
+            return estudiantesList;
+        }
+ 
+public void addEstudiante(Estudiante objeto){
+            try {
+                 estudiantesList.add(objeto);
+                }
+            catch(Exception e) {
+                System.out.println("error encontrado: "+e);
+                }
+        }
+
+public ArrayList getUsuarios(){ 
+            return usuariosList;
+        }
+
+public void addUsuario(Usuario objeto){
+            try {
+                 usuariosList.add(objeto);
+                }
+            catch(Exception e) {
+                System.out.println("error encontrado: "+e);
+                }
+        }
+
+public ArrayList getEdificios(){ 
+            return edificiosList;
+        }
+
+public void addEdificio(Edificio objeto){
+            try {
+                 edificiosList.add(objeto);
+                }
+            catch(Exception e) {
+                System.out.println("error encontrado: "+e);
+                }
+        }
+
+public ArrayList getSalones(){ 
+            return salonesList;
+        }
+
+public void addSalon(Salon objeto){
+            try {
+                 salonesList.add(objeto);
+                }
+            catch(Exception e) {
+                System.out.println("error encontrado: "+e);
+                }
+        }
+
+public ArrayList getCatedratico(){ 
+            return catedraticosList;
+        }
+
+public void addCatedratico(Catedratico objeto){
+            try {
+                 catedraticosList.add(objeto);
+                }
+            catch(Exception e) {
+                System.out.println("error encontrado: "+e);
+                }
+        }
+
+public ArrayList getCursos(){ 
+            return cursosList;
+        }
+
+public void addCurso(Curso objeto){
+            try {
+                 cursosList.add(objeto);
+                }
+            catch(Exception e) {
+                System.out.println("error encontrado: "+e);
+                }
+        }
+
+public ArrayList getHorarios(){ 
+            return horariosList;
+        }
+
+public void addHorario(Horario objeto){
+            try {
+                 horariosList.add(objeto);
+                }
+            catch(Exception e) {
+                System.out.println("error encontrado: "+e);
+                }
+        }
+
+public ArrayList getAsignaciones(){ 
+            return asignacionesList;
+        }
+
+public void addAsignacion(Asignacion objeto){
+            try {
+                 asignacionesList.add(objeto);
+                }
+            catch(Exception e) {
+                System.out.println("error encontrado: "+e);
+                }
+        }
+
+	public Parser(Lexer lex) {
+        super(lex);
+    }		 
+:}
+
+terminal Token Estudiante,EstudianteUs,Colaborador,Coma,PuntoComa,Numero,Usuario,Catedratico,Edificio,Salon,Curso,Horario,Asignar,Parente_a,Parente_c,Texto,TextoSin,Error;
+non terminal INICIO,SENTENCIA,CREARUSUARIO, CREARESTUDIANTE, CREARCATEDRATICO,CREAREDIFICIO,CREARSALON, CREARCURSO, CREARHORARIO, CREARASIGNACION,FINOINICIO;
+
+start with INICIO;
+
+INICIO ::= CREARUSUARIO
+        | CREARESTUDIANTE
+        | CREARCATEDRATICO
+        | CREAREDIFICIO
+        | CREARSALON
+        | CREARCURSO
+        | CREARHORARIO
+        | CREARASIGNACION
+        | error{:System.out.println("Error en expresion");:}
+;   
+
+CREARUSUARIO ::=
+    Usuario Parente_a Numero:n1 Coma Texto:t1 Coma Texto:t2 Coma EstudianteUs:t3 Parente_c PuntoComa FINOINICIO{:
+                        try{
+                           addUsuario(new Usuario(Integer.parseInt(n1.getLexeme()), t1.getLexeme().replace("\"", ""), t2.getLexeme().replace("\"", ""), t3.getLexeme().toUpperCase().replace("\"", "")));
+                       }catch(Exception e){}:}
+|   Usuario Parente_a Numero:n1 Coma Texto:t1 Coma Texto:t2 Coma Colaborador:t3 Parente_c PuntoComa FINOINICIO{: try{addUsuario(new Usuario(Integer.parseInt(n1.getLexeme()), t1.getLexeme().replace("\"", ""), t2.getLexeme().replace("\"", ""), t3.getLexeme().toUpperCase().replace("\"", "")));}catch(Exception e){}:};
+
+CREARESTUDIANTE ::=
+Estudiante Parente_a Numero:n1 Coma Texto:t1 Coma Texto:t2  Parente_c PuntoComa FINOINICIO{:try{addEstudiante(new Estudiante(Integer.parseInt(n1.getLexeme()), t1.getLexeme().replace("\"", ""), t2.getLexeme().replace("\"", "")));}catch(Exception e){}:};
+
+CREARCATEDRATICO ::=
+Catedratico Parente_a Numero:n1 Coma Texto:t1 Coma Texto:t2  Parente_c PuntoComa FINOINICIO{:try{addCatedratico(new Catedratico(n1.getLexeme(),t1.getLexeme().replace("\"", ""),t2.getLexeme().replace("\"", "")));}catch(Exception e){}:};
+
+CREAREDIFICIO ::=
+Edificio Parente_a Texto:t1 Parente_c PuntoComa FINOINICIO{:try{addEdificio(new Edificio(t1.getLexeme().replace("\"", "")));}catch(Exception e){}:};
+
+CREARSALON ::=
+Salon Parente_a Texto:t1 Coma Numero:n1 Coma Numero:n2 Parente_c PuntoComa FINOINICIO{:
+                    try{
+                    addSalon(new Salon(t1.getLexeme().replace("\"", ""),Integer.parseInt(n1.getLexeme()), Integer.parseInt(n2.getLexeme())));}catch(Exception e){}:};
+
+CREARCURSO ::=
+Curso Parente_a Numero:n1 Coma Texto:t1 Coma Numero:n2 Coma Numero:n3 Parente_c PuntoComa FINOINICIO{:try{addCurso(new Curso(Integer.parseInt(n1.getLexeme()), t1.getLexeme().replace("\"", ""), Integer.parseInt(n2.getLexeme()), Integer.parseInt(n3.getLexeme())));}catch(Exception e){}:};
+
+CREARHORARIO ::=
+Horario Parente_a Numero:n1 Coma Texto:t1 Coma Texto:t2 Coma Numero:n2 Coma Numero:n3 Coma TextoSin:t3 Coma Numero:n4 Parente_c PuntoComa FINOINICIO{:
+try{
+                    Horario horario = new Horario(Integer.valueOf(n1.getLexeme()), t1.getLexeme().replace("\"", "") ,t2.getLexeme().replace("\"", ""), Integer.valueOf(n2.getLexeme()),t3.getLexeme(), Integer.valueOf(n3.getLexeme()), Integer.valueOf(n4.getLexeme()));
+                    addHorario(horario);}catch(Exception e){} :};
+
+CREARASIGNACION ::=
+Asignar Parente_a Numero:n1 Coma Numero:n2 Coma Numero:n3 Coma Numero:n4 Parente_c PuntoComa FINOINICIO{:
+try{           
+                        Asignacion asig = new Asignacion( Integer.valueOf(n1.getLexeme()), Integer.valueOf(n2.getLexeme()), Integer.valueOf(n3.getLexeme()), Integer.valueOf(n4.getLexeme()));
+                        addAsignacion(asig); }catch(Exception e){} :};
+
+
+FINOINICIO ::= INICIO
+| 
+;
+
+
+
+
+
+
+

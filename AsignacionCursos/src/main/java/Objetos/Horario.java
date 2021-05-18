@@ -13,21 +13,71 @@ public class Horario {
     private int codigo;
     private String rangoHora;
     private String dia;
-    private Curso codigoCurso;
-     private Edificio codigoEdificio;
-    private Salon codigoSalon;
-    private Catedratico codigoCatedratico;
+    private Curso curso;
+     private Edificio edificio;
+    private Salon salon;
+    private Catedratico catedratico;
+    private int codigoCurso;
+    private int codigoCatedratico;
+    private String nombreEdificio;
+    private int codigoSalon;
+    
+    public Horario(int codigo, String rangoHora, String dia, Curso curso, Edificio edificio, Salon salon, Catedratico catedratico) {
+        this.codigo = codigo;
+        this.rangoHora = rangoHora;
+        this.dia = dia;
+        this.curso = curso;
+        this.edificio = edificio;
+        this.salon = salon;
+        this.catedratico = catedratico;
+    }
 
-    public Horario(int codigo, String rangoHora, String dia, Curso codigoCurso, Edificio codigoEdificio, Salon codigoSalon, Catedratico codigoCatedratico) {
+    public Horario(int codigo, String rangoHora, String dia, int codigoCurso, String nombreEdificio, int codigoSalon, int codigoCatedratico) {
         this.codigo = codigo;
         this.rangoHora = rangoHora;
         this.dia = dia;
         this.codigoCurso = codigoCurso;
-        this.codigoEdificio = codigoEdificio;
+        this.codigoCatedratico = codigoCatedratico;
+        this.nombreEdificio = nombreEdificio;
         this.codigoSalon = codigoSalon;
+    }
+
+    public int getCodigoCurso() {
+        return codigoCurso;
+    }
+
+    public void setCodigoCurso(int codigoCurso) {
+        this.codigoCurso = codigoCurso;
+    }
+
+    public int getCodigoCatedratico() {
+        return codigoCatedratico;
+    }
+
+    public void setCodigoCatedratico(int codigoCatedratico) {
         this.codigoCatedratico = codigoCatedratico;
     }
 
+    public String getNombreEdificio() {
+        return nombreEdificio;
+    }
+
+    public void setNombreEdificio(String nombreEdificio) {
+        this.nombreEdificio = nombreEdificio;
+    }
+
+    public int getCodigoSalon() {
+        return codigoSalon;
+    }
+
+    public void setCodigoSalon(int codigoSalon) {
+        this.codigoSalon = codigoSalon;
+    }
+
+    
+
+    
+   
     public int getCodigo() {
         return codigo;
     }
@@ -52,38 +102,39 @@ public class Horario {
         this.dia = dia;
     }
 
-    public Curso getCodigoCurso() {
-        return codigoCurso;
+    public Curso getCurso() {
+        return curso;
     }
 
-    public void setCodigoCurso(Curso codigoCurso) {
-        this.codigoCurso = codigoCurso;
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
 
-    public Edificio getCodigoEdificio() {
-        return codigoEdificio;
+    public Edificio getEdificio() {
+        return edificio;
     }
 
-    public void setCodigoEdificio(Edificio codigoEdificio) {
-        this.codigoEdificio = codigoEdificio;
+    public void setEdificio(Edificio edificio) {
+        this.edificio = edificio;
     }
 
-    public Salon getCodigoSalon() {
-        return codigoSalon;
+    public Salon getSalon() {
+        return salon;
     }
 
-    public void setCodigoSalon(Salon codigoSalon) {
-        this.codigoSalon = codigoSalon;
+    public void setSalon(Salon salon) {
+        this.salon = salon;
     }
 
-    public Catedratico getCodigoCatedratico() {
-        return codigoCatedratico;
+    public Catedratico getCatedratico() {
+        return catedratico;
     }
 
-    public void setCodigoCatedratico(Catedratico codigoCatedratico) {
-        this.codigoCatedratico = codigoCatedratico;
+    public void setCatedratico(Catedratico catedratico) {
+        this.catedratico = catedratico;
     }
 
+   
   
     
     

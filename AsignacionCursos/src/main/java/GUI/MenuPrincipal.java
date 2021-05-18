@@ -5,7 +5,23 @@
  */
 package GUI;
 
+import CargaDatos.Lexer;
+import CargaDatos.Parser;
+import Estructuras.ArbolAVL;
+import Estructuras.ArbolB.LlaveEntero;
+import Estructuras.ListaCircular;
+import Estructuras.ListaSimple;
 import Main.Main;
+import static Main.Main.*;
+
+import Objetos.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.StringReader;
+import java.util.ArrayList;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -151,6 +167,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jButton12.setText("Carga de Datos");
         jButton12.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton12.setFocusPainted(false);
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 160, 40));
 
         jLabel3.setFont(new java.awt.Font("Consolas", 1, 27)); // NOI18N
@@ -213,7 +234,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-       user.setText(Main.usuarioActual.getNombre());
+        user.setText(Main.usuarioActual.getNombre());
         tipo.setText(Main.usuarioActual.getTipo());
         id.setText(String.valueOf(Main.usuarioActual.getId()));
     }//GEN-LAST:event_formComponentShown
@@ -235,12 +256,99 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-       new CrudEstudiantes();
+        new CrudEstudiantes();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         new CrudHorario();
     }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        JFileChooser fc = new JFileChooser();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.txt", "txt");
+
+        fc.setFileFilter(filtro);
+        int seleccion = fc.showOpenDialog(this);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File fichero = fc.getSelectedFile();
+            try {
+                FileReader fr = new FileReader(fichero);
+                String cadena = "";
+                int valor = fr.read();
+                while (valor != -1) {
+                    cadena += (char) valor;
+                    valor = fr.read();
+                }
+
+                Parser s = new Parser(new Lexer(new StringReader(cadena)));
+                s.parse();
+                ArrayList<Estudiante> estudiantesList = s.getEstudiantesList();
+                ArrayList<Usuario> usuarioList = s.getUsuarios();
+                ArrayList<Edificio> edificiosList = s.getEdificios();
+                ArrayList<Salon> salonesList = s.getSalones();
+                ArrayList<Catedratico> catedraticosList = s.getCatedratico();
+                ArrayList<Curso> cursosList = s.getCursos();
+                ArrayList<Horario> horariosList = s.getHorarios();
+                ArrayList<Asignacion> asignacionesList = s.getAsignaciones();
+
+                for (int i = 0; i < estudiantesList.size(); i++) {
+                    estudiantes.add(estudiantesList.get(i));
+                }
+                for (int i = 0; i < usuarioList.size(); i++) {
+                    if (usuarioList.get(i).getTipo().equals("ESTUDIANTE")) {
+                        Estudiante estu = estudiantes.get(usuarioList.get(i).getId());
+                        if (estu != null) {
+                            listaUsuarios.add(usuarioList.get(i));
+                        }
+                    } else {
+                        listaUsuarios.add(usuarioList.get(i));
+                    }
+                }
+                for (int i = 0; i < edificiosList.size(); i++) {
+                    listaEdificios.add(edificiosList.get(i));
+                }
+                for (int i = 0; i < salonesList.size(); i++) {
+                    ListaCircular.Nodo nodo = listaEdificios.buscarNombre(salonesList.get(i).getEdificio());
+                    Edificio edif = (Edificio) nodo.getData();
+                    ListaSimple salones = edif.getSalones();
+                    salones.add(new Salon(salonesList.get(i).getId(), salonesList.get(i).getEstudiantes()));
+                }
+                for (int i = 0; i < catedraticosList.size(); i++) {
+                    catedraticos.insertar(catedraticosList.get(i).getId(), catedraticosList.get(i));
+                }
+                for (int i = 0; i < cursosList.size(); i++) {
+                    listaCursos.add(cursosList.get(i));
+                }
+                for (int i = 0; i < horariosList.size(); i++) {
+                    ListaCircular.Nodo nodo = listaEdificios.buscarNombre(horariosList.get(i).getNombreEdificio());
+                    Edificio edif = (Edificio) nodo.getData();
+                    ListaSimple salones = edif.getSalones();
+                    ListaSimple.Nodo nodosalon = salones.getNode(String.valueOf(horariosList.get(i).getCodigoSalon()));
+                    ListaCircular.Nodo nodocurso = listaCursos.buscarId(Integer.valueOf(horariosList.get(i).getCodigoCurso()));
+                    ArbolAVL.NodoAVL nodoCatedratico = catedraticos.buscar(String.valueOf(horariosList.get(i).getCodigoCatedratico()));
+                    Salon salon = (Salon) nodosalon.getData();
+                    Curso curso = (Curso) nodocurso.getData();
+                    Catedratico catedratico = (Catedratico) nodoCatedratico.getInfo();
+                    Horario horario = new Horario(Integer.valueOf(horariosList.get(i).getCodigo()), horariosList.get(i).getRangoHora(), horariosList.get(i).getDia(), curso, edif, salon, catedratico);
+                    horarios.insert(new LlaveEntero(horario.getCodigo()), horario);
+                }
+                for (int i = 0; i < asignacionesList.size(); i++) {
+                    Estudiante estu = estudiantes.get(Integer.valueOf(asignacionesList.get(i).getCodigoEstudiante()));
+                    Horario hora=(Horario)horarios.search(new LlaveEntero(Integer.valueOf(asignacionesList.get(i).getCodigoHorario())));
+                    if (listaAsignaciones.obtenerAsignacionesSalon(hora.getSalon().getId(), hora.getEdificio().getNombre()) < hora.getSalon().getEstudiantes()) {
+                        Asignacion asig = new Asignacion(estu, hora, asignacionesList.get(i).getZona(), asignacionesList.get(i).getNotaFinal());
+                        listaAsignaciones.add(asig);
+                    }
+
+                }
+                JOptionPane.showMessageDialog(null, "Datos cargados con exito");
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+    }//GEN-LAST:event_jButton12ActionPerformed
 
     /**
      * @param args the command line arguments

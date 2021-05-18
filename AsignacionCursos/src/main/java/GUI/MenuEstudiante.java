@@ -132,7 +132,7 @@ public class MenuEstudiante extends javax.swing.JFrame {
         ArrayList asignaciones=Main.listaAsignaciones.obtenerAsignacionesEstudiante(Main.usuarioActual.getId());
          DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         for (int i = 0; i < asignaciones.size(); i++) {
-         model.addRow(new Object[]{((Asignacion)asignaciones.get(i)).getHorario().getCodigoCurso().getNombre(),((Asignacion)asignaciones.get(i)).getHorario().getRangoHora(),((Asignacion)asignaciones.get(i)).getHorario().getDia(),((Asignacion)asignaciones.get(i)).getHorario().getCodigoEdificio().getNombre(),((Asignacion)asignaciones.get(i)).getHorario().getCodigoSalon().getId(),((Asignacion)asignaciones.get(i)).getHorario().getCodigoCatedratico().getNombre(),((Asignacion)asignaciones.get(i)).getZona(),((Asignacion)asignaciones.get(i)).getNotaFinal(),((Asignacion)asignaciones.get(i)).getNotaFinal()+((Asignacion)asignaciones.get(i)).getZona() });
+         model.addRow(new Object[]{((Asignacion)asignaciones.get(i)).getHorario().getCurso().getNombre(),((Asignacion)asignaciones.get(i)).getHorario().getRangoHora(),((Asignacion)asignaciones.get(i)).getHorario().getDia(),((Asignacion)asignaciones.get(i)).getHorario().getEdificio().getNombre(),((Asignacion)asignaciones.get(i)).getHorario().getSalon().getId(),((Asignacion)asignaciones.get(i)).getHorario().getCatedratico().getNombre(),((Asignacion)asignaciones.get(i)).getZona(),((Asignacion)asignaciones.get(i)).getNotaFinal(),((Asignacion)asignaciones.get(i)).getNotaFinal()+((Asignacion)asignaciones.get(i)).getZona() });
         }
     }//GEN-LAST:event_formComponentShown
 

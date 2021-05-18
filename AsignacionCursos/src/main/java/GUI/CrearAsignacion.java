@@ -210,7 +210,7 @@ public class CrearAsignacion extends javax.swing.JFrame {
             if (estu == null) {
                 JOptionPane.showMessageDialog(null, "Estudiante con ese carnet no existe");
             } else {
-                if (listaAsignaciones.obtenerAsignacionesSalon(horario.get(horarioCombo.getSelectedIndex()).getCodigoSalon().getId(), horario.get(horarioCombo.getSelectedIndex()).getCodigoEdificio().getNombre()) < horario.get(horarioCombo.getSelectedIndex()).getCodigoSalon().getEstudiantes()) {
+                if (listaAsignaciones.obtenerAsignacionesSalon(horario.get(horarioCombo.getSelectedIndex()).getSalon().getId(), horario.get(horarioCombo.getSelectedIndex()).getEdificio().getNombre()) < horario.get(horarioCombo.getSelectedIndex()).getSalon().getEstudiantes()) {
                     Asignacion asig = new Asignacion(estu, horario.get(horarioCombo.getSelectedIndex()), Integer.valueOf(zona.getText()), Integer.valueOf(notaFinal.getText()));
                     listaAsignaciones.add(asig);
                     JOptionPane.showMessageDialog(null, "Asignacion creada correctamente");
@@ -232,8 +232,8 @@ public class CrearAsignacion extends javax.swing.JFrame {
             DefaultComboBoxModel dml = new DefaultComboBoxModel();
             for (int i = 0; i < horario.size(); i++) {
                 Horario horarioObj = horario.get(i);
-                Curso curso = horarioObj.getCodigoCurso();
-                String horarioString = curso.getNombre() + ", " + horarioObj.getRangoHora() + ", " + horarioObj.getDia() + ", Edificio: " + horarioObj.getCodigoEdificio().getNombre() + ", Salon: " + horarioObj.getCodigoSalon().getId();
+                Curso curso = horarioObj.getCurso();
+                String horarioString = curso.getNombre() + ", " + horarioObj.getRangoHora() + ", " + horarioObj.getDia() + ", Edificio: " + horarioObj.getEdificio().getNombre() + ", Salon: " + horarioObj.getSalon().getId();
                 dml.addElement(horarioString);
 
             }

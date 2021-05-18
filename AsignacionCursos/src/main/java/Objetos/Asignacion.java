@@ -15,6 +15,8 @@ public class Asignacion {
     private Horario horario;
     private int zona;
     private int notaFinal;
+    private int codigoHorario;
+    private int codigoEstudiante;
 
     public Asignacion(Estudiante estudiante, Horario horario, int zona, int notaFinal) {
         this.estudiante = estudiante;
@@ -25,6 +27,33 @@ public class Asignacion {
         Main.Main.totalAsignaciones++;
     }
 
+    public Asignacion(int codigoEstudiante, int codigoHorario, int zona, int notaFinal) {
+        this.codigoEstudiante = codigoEstudiante;
+        this.zona = zona;
+        this.notaFinal = notaFinal;
+        this.codigoHorario = codigoHorario;
+        this.codigo=Main.Main.totalAsignaciones;
+        Main.Main.totalAsignaciones++;
+    }
+
+    public int getCodigoHorario() {
+        return codigoHorario;
+    }
+
+    public void setCodigoHorario(int codigoHorario) {
+        this.codigoHorario = codigoHorario;
+    }
+
+    public int getCodigoEstudiante() {
+        return codigoEstudiante;
+    }
+
+    public void setCodigoEstudiante(int codigoEstudiante) {
+        this.codigoEstudiante = codigoEstudiante;
+    }
+
+    
+    
     public Estudiante getEstudiante() {
         return estudiante;
     }

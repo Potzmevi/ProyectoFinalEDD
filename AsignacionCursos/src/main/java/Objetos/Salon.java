@@ -10,6 +10,7 @@ package Objetos;
  * @author meza4
  */
 public class Salon {
+    private String edificio;
     private int id;
     private int estudiantes;
 
@@ -17,6 +18,14 @@ public class Salon {
         this.id = id;
         this.estudiantes = estudiantes;
     }
+
+    public Salon(String edificio, int id, int estudiantes) {
+        this.edificio = edificio;
+        this.id = id;
+        this.estudiantes = estudiantes;
+    }
+    
+    
 
     public int getId() {
         return id;
@@ -32,6 +41,14 @@ public class Salon {
 
     public void setEstudiantes(int estudiantes) {
         this.estudiantes = estudiantes;
+    }
+
+    public String getEdificio() {
+        return edificio;
+    }
+
+    public void setEdificio(String edificio) {
+        this.edificio = edificio;
     }
     
     

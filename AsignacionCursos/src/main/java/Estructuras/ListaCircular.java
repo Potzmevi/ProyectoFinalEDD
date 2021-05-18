@@ -99,7 +99,7 @@ public class ListaCircular<T> {
                 if (aux.getData() instanceof Asignacion) {
                     Asignacion asignacion = (Asignacion) aux.getData();
                     Horario horario = asignacion.getHorario();
-                    if ((horario.getCodigoEdificio().getNombre().equals(edificio)) && (horario.getCodigoSalon().getId()== salon)) {
+                    if ((horario.getEdificio().getNombre().equals(edificio)) && (horario.getSalon().getId()== salon)) {
                         contador++;
                     }
 
