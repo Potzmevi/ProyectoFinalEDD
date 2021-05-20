@@ -15,6 +15,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import javax.swing.JOptionPane;
 
@@ -54,26 +55,11 @@ public class Main {
         System.out.println("add(abc)");
         estudiantes.add(estu);
         estudiantes.add(estu2);
-
-        System.out.println("items: " + estudiantes);
+        String items= estudiantes.toString();
+        String[] datos=items.split(",");
+        Graphviz.graficarTabla(datos);
         System.out.println("size: " + estudiantes.size());
-        
-        
-       /* File imagenSalida = new File("./imagenYArbolGenerado.dot");
-            if (!imagenSalida.exists()) {
-                imagenSalida.createNewFile();
-            } else {
-                imagenSalida.delete();
-                imagenSalida.createNewFile();
-            }
-            guardarImagen(horarios.toDot(), imagenSalida.getAbsolutePath());
-            String command = "dot -Tpng imagenYArbolGenerado.dot -o imagenYArbolGenerado.png";
-            Runtime.getRuntime().exec(command);
-        */
-        
         new Login();
-        
-        
     }
 
     public static void guardarImagen(String texto, String absolutePath) {

@@ -132,7 +132,7 @@ public class EliminarCatedratico extends javax.swing.JFrame {
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         try {
             if (!id.getText().equals("")) {
-                ArbolAVL.NodoAVL nodo = catedraticos.buscar(id.getText());
+                ArbolAVL.NodoAVL nodo = catedraticos.buscar(Integer.valueOf(id.getText()));
                 if (nodo == null) {
                     JOptionPane.showMessageDialog(null, "Catedratico con ese id no existe");
                 } else {

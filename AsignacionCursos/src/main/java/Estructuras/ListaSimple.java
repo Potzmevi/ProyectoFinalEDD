@@ -6,6 +6,7 @@
 package Estructuras;
 
 import Objetos.Salon;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -254,6 +255,37 @@ public class ListaSimple<T> {
         }
     }
 
+    public Nodo<T> getRoot() {
+        return root;
+    }
+
+    public void setRoot(Nodo<T> root) {
+        this.root = root;
+    }
+
+    public String graficarSalones(String edificio) throws IOException {
+        String salida = "";
+        if (root != null) {
+            Nodo<T> aux = root;
+            while (aux != null) {
+                if (aux.getData() instanceof Salon) {
+
+                   try {
+                        Salon salon = (Salon) aux.getData();
+                        Salon salonSiguiente = (Salon) aux.getNext().getData();
+                        salida += edificio+"_"+salon.getId()+ "->" + edificio+"_"+salonSiguiente.getId() + " ; \n";
+                    } catch (Exception e) {
+                        Salon salon = (Salon) aux.getData();
+                        salida += edificio+"_"+salon.getId() + " [constraint=false]; \n";
+                    }
+
+                }
+                aux = aux.getNext();
+            }
+        }
+        return salida;
+    }
+    
     public class Nodo<T> {
 
         private T data;

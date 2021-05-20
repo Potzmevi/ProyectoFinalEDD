@@ -1,11 +1,14 @@
 package Estructuras.ArbolB;
 
+import Objetos.Horario;
+import java.util.ArrayList;
+
 public class ArbolB {
 
     private Nodo mRaiz = null;
     private int mK = 2;
     private int mAltura = 0;
-
+    
     public String toDot() {
         StringBuilder b = new StringBuilder();
 
@@ -152,6 +155,33 @@ public class ArbolB {
 
     }
 
+    public Nodo searchNodo(Ordenable key) {
+        return searchNodo(key, mRaiz);
+    }
+
+    public Nodo searchNodo(Ordenable key, Nodo node) {
+
+        if ((node == null) || (node.mB < 1)) {
+            System.err.println("error");
+            return null;
+        }
+
+        if (key.menorQue(node.mLlaves[0]))
+            return searchNodo(key, node.mPunteros[0]);
+
+        if (key.mayorQue(node.mLlaves[node.mB - 1]))
+            return searchNodo(key, node.mPunteros[node.mB]);
+
+        int i = 0;
+        while ((i < node.mB - 1) && (key.mayorQue(node.mLlaves[i])))
+            i++;
+
+        if (key.igualA(node.mLlaves[i]))
+            return node;
+
+        return searchNodo(key, node.mPunteros[i]);
+
+    }
 
     public int getAltura() {
         return mAltura;

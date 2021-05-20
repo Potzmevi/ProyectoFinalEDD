@@ -5,7 +5,10 @@
  */
 package Estructuras;
 
+import Main.Main;
 import Objetos.Catedratico;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,6 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class ArbolAVL {
 
+    private StringBuffer grafica;
     private NodoAVL raiz;
     public int size;
     private String graficaArbolCapas = "";
@@ -23,23 +27,23 @@ public class ArbolAVL {
         size = 0;
     }
 
-    public NodoAVL buscar(String id, NodoAVL raiz) {
+    private NodoAVL buscar(int id, NodoAVL raiz) {
         if (raiz == null) {
             return null;
         }
-        if (id.compareTo(raiz.getClave()) == 0) {
+        if (id==raiz.getClave()) {
             return raiz;
         }
-        if (id.compareTo(raiz.getClave()) > 0) {
+        if (id>raiz.getClave()) {
             return buscar(id, raiz.getDer());
         }
-        if (id.compareTo(raiz.getClave()) < 0) {
+        if (id<raiz.getClave()) {
             return buscar(id, raiz.getIzq());
         }
         return null;
     }
 
-    public NodoAVL buscar(String id) {
+    public NodoAVL buscar(int id) {
         return buscar(id, this.raiz);
     }
 
@@ -50,7 +54,7 @@ public class ArbolAVL {
         return x.getFactorEquilibrio();
     }
 
-    public void modificarDato(String id, Catedratico ca){
+    public void modificarDato(int id, Catedratico ca){
         NodoAVL nodo = buscar(id);
         if(nodo!=null){
             nodo.setInfo(ca);
@@ -98,9 +102,9 @@ public class ArbolAVL {
         if (raiz == null) {
             return raiz;
         }
-        if (nuevo.getClave().compareTo(raiz.getClave()) < 0) {
+        if (nuevo.getClave()<raiz.getClave() ) {
             raiz.setIzq(eliminarAVL(nuevo, raiz.getIzq()));
-        } else if (nuevo.getClave().compareTo(raiz.getClave()) > 0) {
+        } else if (nuevo.getClave() > raiz.getClave()) {
             raiz.setDer(eliminarAVL(nuevo, raiz.getDer()));
         } else {
             if ((raiz.getDer() == null) || (raiz.getIzq()) == null) {
@@ -149,15 +153,15 @@ public class ArbolAVL {
 
     }
 
-    public NodoAVL insertarAVL(NodoAVL nuevo, NodoAVL subAr) {
+    private NodoAVL insertarAVL(NodoAVL nuevo, NodoAVL subAr) {
         NodoAVL nuevoPadre = subAr;
-        if (nuevo.getClave().compareTo(subAr.getClave()) < 0) {
+        if (nuevo.getClave() < subAr.getClave()) {
             if (subAr.getIzq() == null) {
                 subAr.setIzq(nuevo);
             } else {
                 subAr.setIzq(insertarAVL(nuevo, subAr.getIzq()));
                 if (obtenerAltura(subAr.getIzq()) - obtenerAltura(subAr.getDer()) == 2) {
-                    if (nuevo.getClave().compareTo(subAr.getIzq().getClave()) < 0) {
+                    if (nuevo.getClave() < subAr.getIzq().getClave() ){
 
                         nuevoPadre = rotacionIzquierda(subAr);
                     } else {
@@ -165,13 +169,13 @@ public class ArbolAVL {
                     }
                 }
             }
-        } else if (nuevo.getClave().compareTo(subAr.getClave()) > 0) {
+        } else if (nuevo.getClave() > subAr.getClave()) {
             if (subAr.getDer() == null) {
                 subAr.setDer(nuevo);
             } else {
                 subAr.setDer(insertarAVL(nuevo, subAr.getDer()));
                 if (obtenerAltura(subAr.getDer()) - obtenerAltura(subAr.getIzq()) == 2) {
-                    if (nuevo.getClave().compareTo(subAr.getDer().getClave()) > 0) {
+                    if (nuevo.getClave() > subAr.getDer().getClave()) {
                         nuevoPadre = rotacionDerecha(subAr);
                     } else {
                         nuevoPadre = rotacionIzquierda(subAr);
@@ -192,30 +196,9 @@ public class ArbolAVL {
         return nuevoPadre;
     }
 
-    public String obtenerGrafica() {
-        graficaArbolCapas = "";
-        obtenerGrafica(this.raiz);
-        return graficaArbolCapas;
-    }
+    
 
-    private void obtenerGrafica(NodoAVL nodo) {
-        if (null == nodo) {
-            return;
-        }
-        obtenerGrafica(nodo.getIzq());
-        try {
-
-            graficaArbolCapas += nodo.getClave() + "->" + nodo.getIzq().getClave() + " izquierdo;\n";
-        } catch (Exception e) {
-        }
-        try {
-            graficaArbolCapas += nodo.getClave() + "->" + nodo.getDer().getClave() + " derecho;\n";
-        } catch (Exception e) {
-        }
-        obtenerGrafica(nodo.getDer());
-    }
-
-    public void insertar(String id, Object info) {
+    public void insertar(int id, Object info) {
         NodoAVL nuevo = new NodoAVL(id, info);
         if (raiz == null) {
             raiz = nuevo;
@@ -274,13 +257,13 @@ public class ArbolAVL {
 
     public class NodoAVL {
 
-        private String clave;
+        private int clave;
         private NodoAVL izq;
         private NodoAVL der;
         private Object info;
         private int fe;
 
-        public NodoAVL(String clave, Object info) {
+        public NodoAVL(int clave, Object info) {
             this.clave = clave;
             this.info = info;
             this.izq = null;
@@ -295,11 +278,11 @@ public class ArbolAVL {
             this.info = info;
         }
 
-        public String getClave() {
+        public int getClave() {
             return clave;
         }
 
-        public void setClave(String clave) {
+        public void setClave(int clave) {
             this.clave = clave;
         }
 
@@ -328,4 +311,75 @@ public class ArbolAVL {
         }
 
     }
+    
+    public void crearGrafica() throws IOException {
+        grafica = new StringBuffer();
+        grafica.append("digraph G{\n"
+                + "subgraph cluster_0{\n"
+                + "style=filled;\n"
+                + "color=lightgrey;\n"
+                + "node[shape=rect,style=filled,color=white];\n");
+        obtenerGrafica(raiz);
+        grafica.append("label=\"Arbol de Catedraticos\";\n"
+                + "}\n"
+                + "}\n");
+         File imagenSalida = new File("./ArbolCate.dot");
+        if (!imagenSalida.exists()) {
+            imagenSalida.createNewFile();
+        } else {
+            imagenSalida.delete();
+            imagenSalida.createNewFile();
+        }
+        Main.guardarImagen(grafica.toString(), imagenSalida.getAbsolutePath());
+        String command = "dot -Tpng ArbolCate.dot -o ArbolCate.png";
+        Runtime.getRuntime().exec(command);
+    }
+
+    public void obtenerGrafica(NodoAVL nodo) {
+
+        if (nodo == null)
+        {
+            return ;
+        }
+        if (nodo.getDer()== null && nodo.getIzq() == null)
+        {
+            Catedratico catedratico = (Catedratico) nodo.getInfo();
+            grafica.append("\" " + catedratico.getId() + "\n" + catedratico.getNombre()+ "\" ;\n");
+
+        }
+        obtenerGrafica(nodo.getIzq());
+        if (nodo.getIzq() != null)
+        {
+            Catedratico catedratico = (Catedratico) nodo.getInfo();
+            Catedratico catedraticoChild = (Catedratico) nodo.getIzq().getInfo();
+            grafica.append("\" " + catedratico.getId() + "\n" + catedratico.getNombre() + "\"" + "->" + "\" " + catedraticoChild.getId() + "\n" + catedraticoChild.getNombre()+ "\"" + ";\n");
+        }
+        if (nodo.getDer() != null)
+        {
+            Catedratico catedratico = (Catedratico) nodo.getInfo();
+            Catedratico catedraticoChild = (Catedratico) nodo.getDer().getInfo();
+            grafica.append("\" " + catedratico.getId() + "\n" + catedratico.getNombre()+ "\"" + "->" + "\" " + catedraticoChild.getId() + "\n" + catedraticoChild.getNombre() + "\"" + ";\n");
+        }
+
+        obtenerGrafica(nodo.getDer());
+
+    }
+
+    public String crearGraficaHorario() throws IOException {
+        grafica = new StringBuffer();
+        grafica.append(
+                "subgraph cluster_0{\n"
+                + "node[shape=rect];\n");
+        obtenerGrafica(raiz);
+        grafica.append("label=\"Catedraticos\";\n"
+                + "}\n");
+
+        return grafica.toString();
+
+    }
+    
+    public NodoAVL getRaiz() {
+        return raiz;
+    }
+    
 }

@@ -1,0 +1,119 @@
+digraph g { 
+ node [shape=record];
+graph [fontsize=10 fontname="Verdana" compound=true];subgraph clusterLista { node [shape = square,height=.1];  label="Lista doble circular"; 
+T3->T5 [constraint=false]; 
+T5->T3 [constraint=false]; 
+subgraph cluster_0{node [shape = square,height=.1]; rankdir=LR; label="Salones0";  
+T3_310->T3_110 ; 
+T3_110 [constraint=false]; 
+ } 
+T3->T3_310[lhead = cluster_0]; 
+T5->T1 [constraint=false]; 
+T1->T5 [constraint=false]; 
+subgraph cluster_1{node [shape = square,height=.1]; rankdir=LR; label="Salones1";  
+T5_310 [constraint=false]; 
+ } 
+T5->T5_310[lhead = cluster_1]; 
+T1->T3 [constraint=false]; 
+T3->T1 [constraint=false]; 
+subgraph cluster_2{node [shape = square,height=.1]; rankdir=LR; label="Salones2";  
+ } 
+}
+subgraph clusterCurso { node [shape = square,height=.1];  label="Cursos"; 
+771->777 [constraint=false]; 
+777->771 [constraint=false]; 
+777->771 [constraint=false]; 
+771->777 [constraint=false]; 
+}
+subgraph cluster_0{
+node[shape=rect];
+" 1
+Prof2" ;
+" 2
+Prof3"->" 1
+Prof2";
+" 3
+Prof2"->" 2
+Prof3";
+" 3
+Prof2"->" 4
+Prof3";
+" 4
+Prof3" ;
+" 5
+Prof2"->" 3
+Prof2";
+" 5
+Prof2"->" 7
+Prof2";
+" 6
+Prof3" ;
+" 7
+Prof2"->" 6
+Prof3";
+" 7
+Prof2"->" 8
+Prof3";
+" 8
+Prof3" ;
+label="Catedraticos";
+}
+Nodo1438611036[label="<P0>|<4> 4|<P1>|<7> 7|<P2>|<10> 10|<P3>"];
+Nodo1731272586[label="<P0>|<1> 1|<P1>|<2> 2|<P2>|<3> 3|<P3>"];
+Nodo1438611036:P0 -> Nodo1731272586;
+Nodo921083373[label="<P0>|<5> 5|<P1>|<6> 6|<P2>"];
+Nodo1438611036:P1 -> Nodo921083373;
+Nodo1284196339[label="<P0>|<8> 8|<P1>|<9> 9|<P2>"];
+Nodo1438611036:P2 -> Nodo1284196339;
+Nodo1655227816[label="<P0>|<11> 11|<P1>|<12> 12|<P2>"];
+Nodo1438611036:P3 -> Nodo1655227816;
+label = " Horarios ";
+Nodo1438611036:4->T3_310[constraint=false];
+Nodo1438611036:4->777[constraint=false];
+Nodo1438611036:4->" 1
+Prof2"[constraint=false];
+Nodo1438611036:7->T3_310[constraint=false];
+Nodo1438611036:7->777[constraint=false];
+Nodo1438611036:7->" 1
+Prof2"[constraint=false];
+Nodo1438611036:10->T3_310[constraint=false];
+Nodo1438611036:10->777[constraint=false];
+Nodo1438611036:10->" 1
+Prof2"[constraint=false];
+Nodo1731272586:1->T3_110[constraint=false];
+Nodo1731272586:1->777[constraint=false];
+Nodo1731272586:1->" 1
+Prof2"[constraint=false];
+Nodo1731272586:2->T3_110[constraint=false];
+Nodo1731272586:2->777[constraint=false];
+Nodo1731272586:2->" 1
+Prof2"[constraint=false];
+Nodo1731272586:3->T3_310[constraint=false];
+Nodo1731272586:3->777[constraint=false];
+Nodo1731272586:3->" 1
+Prof2"[constraint=false];
+Nodo921083373:5->T3_310[constraint=false];
+Nodo921083373:5->777[constraint=false];
+Nodo921083373:5->" 1
+Prof2"[constraint=false];
+Nodo921083373:6->T3_310[constraint=false];
+Nodo921083373:6->777[constraint=false];
+Nodo921083373:6->" 1
+Prof2"[constraint=false];
+Nodo1284196339:8->T3_310[constraint=false];
+Nodo1284196339:8->777[constraint=false];
+Nodo1284196339:8->" 1
+Prof2"[constraint=false];
+Nodo1284196339:9->T3_310[constraint=false];
+Nodo1284196339:9->777[constraint=false];
+Nodo1284196339:9->" 1
+Prof2"[constraint=false];
+Nodo1655227816:11->T3_310[constraint=false];
+Nodo1655227816:11->777[constraint=false];
+Nodo1655227816:11->" 1
+Prof2"[constraint=false];
+Nodo1655227816:12->T3_310[constraint=false];
+Nodo1655227816:12->777[constraint=false];
+Nodo1655227816:12->" 1
+Prof2"[constraint=false];
+}

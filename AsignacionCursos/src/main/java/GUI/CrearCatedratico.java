@@ -187,9 +187,9 @@ public class CrearCatedratico extends javax.swing.JFrame {
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         try {
             if (!usuario.getText().equals("") && !direccion.getText().equals("") && !id.getText().equals("")) {
-                NodoAVL nodo = catedraticos.buscar(id.getText());
+                NodoAVL nodo = catedraticos.buscar(Integer.valueOf(id.getText()));
                 if (nodo == null) {
-                    catedraticos.insertar(id.getText(), new Catedratico(id.getText(),usuario.getText(),direccion.getText()));
+                    catedraticos.insertar(Integer.valueOf(id.getText()), new Catedratico(id.getText(),usuario.getText(),direccion.getText()));
                     JOptionPane.showMessageDialog(null, "Catedratico " + usuario.getText() + " creado con exito");
                     this.dispose();
                 } else {

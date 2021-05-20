@@ -259,7 +259,7 @@ public class TablaHash<T> {
         return sb.toString();
     }
 
-    private class List<T> {
+    public class List<T> {
 
         public Node<T> getHead() {
             return head;

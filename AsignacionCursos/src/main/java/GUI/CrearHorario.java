@@ -264,7 +264,7 @@ public class CrearHorario extends javax.swing.JFrame {
                     if (nodosalon != null) {
                         Nodo nodocurso = listaCursos.buscarId(Integer.valueOf(curso.getText()));
                         if (nodocurso != null) {
-                            ArbolAVL.NodoAVL nodoCatedratico = catedraticos.buscar(catedratico.getText());
+                            ArbolAVL.NodoAVL nodoCatedratico = catedraticos.buscar(Integer.valueOf(catedratico.getText()));
                             if (nodoCatedratico != null) {
                                 Salon salon= (Salon) nodosalon.getData();
                                 Curso curso= (Curso)nodocurso.getData();

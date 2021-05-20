@@ -208,7 +208,7 @@ public class ModificarCatedratico extends javax.swing.JFrame {
             
             if (!usuario.getText().equals("") && !direccion.getText().equals("")) {
                 Catedratico cate = new Catedratico(id.getText(), usuario.getText(), direccion.getText());
-                catedraticos.modificarDato(id.getText(), cate);
+                catedraticos.modificarDato(Integer.valueOf(id.getText()), cate);
                JOptionPane.showMessageDialog(null, "Catedratico modificado con exito");
                this.dispose();
             } else {
@@ -221,7 +221,7 @@ public class ModificarCatedratico extends javax.swing.JFrame {
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         try {
             if (!id.getText().equals("")) {
-                ArbolAVL.NodoAVL nodo = catedraticos.buscar(id.getText());
+                ArbolAVL.NodoAVL nodo = catedraticos.buscar(Integer.valueOf(id.getText()));
                 if (nodo == null) {
                     JOptionPane.showMessageDialog(null, "Catedratico con ese id no existe");
                 } else {

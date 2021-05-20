@@ -1,0 +1,22 @@
+digraph G{
+style=filled;
+graph [fontsize=10 fontname="Verdana" compound=true];label = " Lista de Edificios y salones ";
+subgraph Lista { node [shape = square,height=.1];  label="Lista doble circular"; 
+T3->T5 [constraint=false]; 
+T5->T3 [constraint=false]; 
+subgraph cluster_0{node [shape = square,height=.1]; rankdir=LR; label="Salones0";  
+T3_310->T3_110 ; 
+T3_110 [constraint=false]; 
+ } 
+T3->T3_310[lhead = cluster_0]; 
+T5->T1 [constraint=false]; 
+T1->T5 [constraint=false]; 
+subgraph cluster_1{node [shape = square,height=.1]; rankdir=LR; label="Salones1";  
+T5_310 [constraint=false]; 
+ } 
+T5->T5_310[lhead = cluster_1]; 
+T1->T3 [constraint=false]; 
+T3->T1 [constraint=false]; 
+subgraph cluster_2{node [shape = square,height=.1]; rankdir=LR; label="Salones2";  
+ } 
+}}

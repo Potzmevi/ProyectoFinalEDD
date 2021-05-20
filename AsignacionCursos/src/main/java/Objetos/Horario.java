@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Objetos;
-
+import Estructuras.ArbolB.Nodo;
 /**
  *
  * @author meza4
@@ -21,6 +21,7 @@ public class Horario {
     private int codigoCatedratico;
     private String nombreEdificio;
     private int codigoSalon;
+    private String nodoPadre;
     
     public Horario(int codigo, String rangoHora, String dia, Curso curso, Edificio edificio, Salon salon, Catedratico catedratico) {
         this.codigo = codigo;
@@ -132,6 +133,14 @@ public class Horario {
 
     public void setCatedratico(Catedratico catedratico) {
         this.catedratico = catedratico;
+    }
+
+    public String getNodoPadre() {
+        return nodoPadre;
+    }
+
+    public void setNodoPadre(String nodoPadre) {
+        this.nodoPadre = nodoPadre;
     }
 
    
