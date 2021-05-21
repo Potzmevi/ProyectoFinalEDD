@@ -1,0 +1,9 @@
+digraph G{
+style=filled;
+graph [fontsize=10 fontname="Verdana" compound=true];label = " Lista de Cursos ";
+subgraph Lista { node [shape = square,height=.1];  label="Lista doble circular"; 
+771->777 [constraint=false]; 
+777->771 [constraint=false]; 
+777->771 [constraint=false]; 
+771->777 [constraint=false]; 
+}}

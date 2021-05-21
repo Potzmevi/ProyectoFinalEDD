@@ -74,68 +74,68 @@ Prof3";
 Prof3" ;
 label="Catedraticos";
 }
-Nodo1438611036[label="<P0>|<4> 4|<P1>|<7> 7|<P2>|<10> 10|<P3>"];
-Nodo1731272586[label="<P0>|<1> 1|<P1>|<2> 2|<P2>|<3> 3|<P3>"];
-Nodo1438611036:P0 -> Nodo1731272586;
-Nodo921083373[label="<P0>|<5> 5|<P1>|<6> 6|<P2>"];
-Nodo1438611036:P1 -> Nodo921083373;
-Nodo1284196339[label="<P0>|<8> 8|<P1>|<9> 9|<P2>"];
-Nodo1438611036:P2 -> Nodo1284196339;
-Nodo1655227816[label="<P0>|<11> 11|<P1>|<12> 12|<P2>"];
-Nodo1438611036:P3 -> Nodo1655227816;
+Nodo1389470822[label="<P0>|<4> 4|<P1>|<7> 7|<P2>|<10> 10|<P3>"];
+Nodo178175452[label="<P0>|<1> 1|<P1>|<2> 2|<P2>|<3> 3|<P3>"];
+Nodo1389470822:P0 -> Nodo178175452;
+Nodo1454093335[label="<P0>|<5> 5|<P1>|<6> 6|<P2>"];
+Nodo1389470822:P1 -> Nodo1454093335;
+Nodo2071413135[label="<P0>|<8> 8|<P1>|<9> 9|<P2>"];
+Nodo1389470822:P2 -> Nodo2071413135;
+Nodo609892371[label="<P0>|<11> 11|<P1>|<12> 12|<P2>"];
+Nodo1389470822:P3 -> Nodo609892371;
 label = " Horarios ";
-Nodo1438611036:4->T3_310[constraint=false];
-Nodo1438611036:4->777[constraint=false];
-Nodo1438611036:4->" 1
+Nodo1389470822:4->T3_310[constraint=false];
+Nodo1389470822:4->777[constraint=false];
+Nodo1389470822:4->" 1
 Prof2"[constraint=false];
-Nodo1438611036:7->T3_310[constraint=false];
-Nodo1438611036:7->777[constraint=false];
-Nodo1438611036:7->" 1
+Nodo1389470822:7->T3_310[constraint=false];
+Nodo1389470822:7->777[constraint=false];
+Nodo1389470822:7->" 1
 Prof2"[constraint=false];
-Nodo1438611036:10->T3_310[constraint=false];
-Nodo1438611036:10->777[constraint=false];
-Nodo1438611036:10->" 1
+Nodo1389470822:10->T3_310[constraint=false];
+Nodo1389470822:10->777[constraint=false];
+Nodo1389470822:10->" 1
 Prof2"[constraint=false];
-Nodo1731272586:1->T3_110[constraint=false];
-Nodo1731272586:1->777[constraint=false];
-Nodo1731272586:1->" 1
+Nodo178175452:1->T3_110[constraint=false];
+Nodo178175452:1->777[constraint=false];
+Nodo178175452:1->" 1
 Prof2"[constraint=false];
-Nodo1731272586:2->T3_110[constraint=false];
-Nodo1731272586:2->777[constraint=false];
-Nodo1731272586:2->" 1
+Nodo178175452:2->T3_110[constraint=false];
+Nodo178175452:2->777[constraint=false];
+Nodo178175452:2->" 1
 Prof2"[constraint=false];
-Nodo1731272586:3->T3_310[constraint=false];
-Nodo1731272586:3->777[constraint=false];
-Nodo1731272586:3->" 1
+Nodo178175452:3->T3_310[constraint=false];
+Nodo178175452:3->777[constraint=false];
+Nodo178175452:3->" 1
 Prof2"[constraint=false];
-Nodo921083373:5->T3_310[constraint=false];
-Nodo921083373:5->777[constraint=false];
-Nodo921083373:5->" 1
+Nodo1454093335:5->T3_310[constraint=false];
+Nodo1454093335:5->777[constraint=false];
+Nodo1454093335:5->" 1
 Prof2"[constraint=false];
-Nodo921083373:6->T3_310[constraint=false];
-Nodo921083373:6->777[constraint=false];
-Nodo921083373:6->" 1
+Nodo1454093335:6->T3_310[constraint=false];
+Nodo1454093335:6->777[constraint=false];
+Nodo1454093335:6->" 1
 Prof2"[constraint=false];
-Nodo1284196339:8->T3_310[constraint=false];
-Nodo1284196339:8->777[constraint=false];
-Nodo1284196339:8->" 1
+Nodo2071413135:8->T3_310[constraint=false];
+Nodo2071413135:8->777[constraint=false];
+Nodo2071413135:8->" 1
 Prof2"[constraint=false];
-Nodo1284196339:9->T3_310[constraint=false];
-Nodo1284196339:9->777[constraint=false];
-Nodo1284196339:9->" 1
+Nodo2071413135:9->T3_310[constraint=false];
+Nodo2071413135:9->777[constraint=false];
+Nodo2071413135:9->" 1
 Prof2"[constraint=false];
-Nodo1655227816:11->T3_310[constraint=false];
-Nodo1655227816:11->777[constraint=false];
-Nodo1655227816:11->" 1
+Nodo609892371:11->T3_310[constraint=false];
+Nodo609892371:11->777[constraint=false];
+Nodo609892371:11->" 1
 Prof2"[constraint=false];
-Nodo1655227816:12->T3_310[constraint=false];
-Nodo1655227816:12->777[constraint=false];
-Nodo1655227816:12->" 1
+Nodo609892371:12->T3_310[constraint=false];
+Nodo609892371:12->777[constraint=false];
+Nodo609892371:12->" 1
 Prof2"[constraint=false];
-Asignacion_3->Nodo1731272586:3[constraint=false];
+Asignacion_3->Nodo178175452:3[constraint=false];
 Asignacion_3->"[200478542]"[constraint=false];
-Asignacion_4->Nodo1731272586:3[constraint=false];
+Asignacion_4->Nodo178175452:3[constraint=false];
 Asignacion_4->"[200745781]"[constraint=false];
-Asignacion_5->Nodo1731272586:1[constraint=false];
+Asignacion_5->Nodo178175452:1[constraint=false];
 Asignacion_5->"[200145785]"[constraint=false];
 }

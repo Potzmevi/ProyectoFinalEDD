@@ -34,7 +34,7 @@ import javax.swing.DefaultComboBoxModel;
 
 public class CrearAsignacion extends javax.swing.JFrame {
 
-    public ArrayList<Horario> horario = horarios.getmRaiz().toArray();
+   public ArrayList<Horario> horario;
 
     /**
      * Creates new form Login

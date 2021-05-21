@@ -65,9 +65,7 @@ public class Controlador {
             salones.add(new Salon(salonesList.get(i).getId(), salonesList.get(i).getEstudiantes()));
         }
         for (int i = 0; i < catedraticosList.size(); i++) {
-
             catedraticos.insertar(Integer.valueOf(catedraticosList.get(i).getId()), catedraticosList.get(i));
-
         }
         for (int i = 0; i < cursosList.size(); i++) {
             listaCursos.add(cursosList.get(i));
@@ -95,10 +93,9 @@ public class Controlador {
 
         }
         JOptionPane.showMessageDialog(null, "Datos cargados con exito");
-        listaEdificios.graficarListaCircular();
-        catedraticos.crearGrafica();
         
-        Graphviz.graficarHorario();
-        Graphviz.graficarAsignaciones();
+        
+        
+       
     }
 }

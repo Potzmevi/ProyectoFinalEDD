@@ -28,6 +28,7 @@ public class ModificarSalon extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    
     public ModificarSalon() {
         initComponents();
         setVisible(true);
@@ -70,7 +71,7 @@ public class ModificarSalon extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Consolas", 1, 31)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Modificar Catedratico");
+        jLabel3.setText("Modificar Salon");
 
         jButton12.setBackground(new java.awt.Color(255, 255, 204));
         jButton12.setFont(new java.awt.Font("Consolas", 0, 15)); // NOI18N
@@ -151,7 +152,7 @@ public class ModificarSalon extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addComponent(jLabel3)
-                        .addGap(0, 38, Short.MAX_VALUE))))
+                        .addGap(0, 140, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

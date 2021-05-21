@@ -1,0 +1,11 @@
+digraph G{
+style=filled;
+graph [fontsize=10 fontname="Verdana" compound=true];label = " Lista de Usuarios ";
+subgraph Lista { node [shape = square,height=.1];  label="Lista doble circular"; 
+201930268->1234 [constraint=false]; 
+1234->201930268 [constraint=false]; 
+1234->1235 [constraint=false]; 
+1235->1234 [constraint=false]; 
+1235->201930268 [constraint=false]; 
+201930268->1235 [constraint=false]; 
+}}

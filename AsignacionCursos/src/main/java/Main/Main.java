@@ -38,27 +38,15 @@ public class Main {
     
     public static void main(String[] args) throws IOException {
 
-        listaUsuarios.add(new Usuario(201930268, "p", "p", "ESTUDIANTE"));
-        listaUsuarios.add(new Usuario(1234, "g", "g", "COLABORADOR"));
-        listaUsuarios.add(new Usuario(1235, "Trolo", "Alejandrio", "ESTUDIANTE"));
 
-        Estudiante estu = new Estudiante(201930268, "Juan Pablo", "Zona 9");
-        Estudiante estu2 = new Estudiante(201930258, "Juan Pablo", "Zona 9");
-        Estudiante estu3 = new Estudiante(201330268, "Juan Pablo", "Zona 9");
-        Estudiante estu4 = new Estudiante(201930268, "Juan Pablo", "Zona 9");
-        Estudiante estu5 = new Estudiante(201930643, "Juan Pablo", "Zona 9");
-        Estudiante estu6 = new Estudiante(201920643, "Juan Pablo", "Zona 9");
-        Estudiante estu7 = new Estudiante(201935643, "Juan Pablo", "Zona 9");
-        Estudiante estu8 = new Estudiante(201230643, "Juan Pablo", "Zona 9");
+        listaUsuarios.add(new Usuario(1234, "admin", "123", "COLABORADOR"));
 
-        System.out.println(horarios.search(new LlaveEntero(1)));
-        System.out.println("add(abc)");
-        estudiantes.add(estu);
-        estudiantes.add(estu2);
-        String items= estudiantes.toString();
-        String[] datos=items.split(",");
-        Graphviz.graficarTabla(datos);
-        System.out.println("size: " + estudiantes.size());
+
+        
+
+        
+       
+        
         new Login();
     }
 
